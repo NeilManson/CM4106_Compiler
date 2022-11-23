@@ -131,6 +131,8 @@ namespace Compiler.SyntacticAnalysis
                     return ParseWhileCommand();
                 case QuickIf:
                     return ParseQuickIfCommand();
+                case Loop:
+                    return ParseLoopCommand();
                 default:
                     return ParseSkipCommand();
             }

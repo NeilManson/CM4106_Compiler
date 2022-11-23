@@ -10,7 +10,7 @@ in
 				while (n > 0) 
 					begin
 						putint(n); puteol();
-						n := n-1
+						n ~ n-1
 					end
 				wend
 			else
