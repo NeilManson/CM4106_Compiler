@@ -99,6 +99,16 @@ namespace Compiler.SemanticAnalysis
         }
 
         /// <summary>
+        /// Carries out identification on quick if command
+        /// </summary>
+        /// <param name="quickIfCommand">The node to perform identifcation on</param>
+        private void PerformIdentificationOnQuickIfCommand(QuickIfCommandNode quickIfCommand)
+        {
+            PerformIdentification(quickIfCommand.Expression);
+            PerformIdentification(quickIfCommand.DoCommand);
+        }
+
+        /// <summary>
         /// Carries out identification on a call command node
         /// </summary>
         /// <param name="callCommand">The node to perform identification on</param>

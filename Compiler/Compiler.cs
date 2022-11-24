@@ -94,15 +94,17 @@ namespace Compiler
 
             // Identify
             Write("Identifying...");
-            //Identifier.PerformIdentification(tree);
-            //if (Reporter.HasErrors) return;
+            Identifier.PerformIdentification(tree);
+            if (Reporter.HasErrors) return;
             WriteLine("Done");
+            
 
             // Type check
             Write("Type Checking...");
-            //Checker.PerformTypeChecking(tree);
-            //if (Reporter.HasErrors) return;
+            Checker.PerformTypeChecking(tree);
+            if (Reporter.HasErrors) return;
             WriteLine("Done");
+            WriteLine(TreePrinter.ToString(tree));
 
             // Code generation
             Write("Generating code...");

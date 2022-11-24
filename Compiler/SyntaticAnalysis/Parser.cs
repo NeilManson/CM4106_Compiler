@@ -204,7 +204,7 @@ namespace Compiler.SyntacticAnalysis
             Debugger.Write("Parsing If Command");
             Position startPosition = CurrentToken.Position;
             Accept(If);
-            IExpressionNode expression = ParseExpression();
+            IExpressionNode expression = ParseBracketExpression();
             Accept(Then);
             ICommandNode thenCommand = ParseSingleCommand();
             Accept(Else);
