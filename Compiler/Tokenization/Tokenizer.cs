@@ -136,33 +136,48 @@ namespace Compiler.Tokenization
                     else
                     {
                         return TokenType.Identifier;
-                    }
-                        
+                    }    
                 }
                 else
                 {
                     return TokenType.Error;
                 }
             }
+            //else if (Reader.Current == '=')
+            //{
+            //    // Read an =
+            //    // Is it a =>
+            //    TakeIt();
+            //    if (Reader.Current == '>')
+            //    {
+            //        TakeIt();
+            //        return TokenType.Do;
+            //    }
+            //    else
+            //    {
+            //        return TokenType.Error;
+            //    }
+            //}
             else if (IsOperator(Reader.Current))
             {
                 // Read an operator
-                TakeIt();
-                return TokenType.Operator;
-            }
-            else if (Reader.Current == '=')
-            {
-                // Read an :
-                // Is it a : or a :=
-                TakeIt();
-                if (Reader.Current == '>')
+                if(Reader.Current == '=')
                 {
                     TakeIt();
-                    return TokenType.Do;
+                    if(Reader.Current == '>')
+                    {
+                        TakeIt();
+                        return TokenType.Do;
+                    }
+                    else
+                    {
+                        return TokenType.Operator;
+                    }
                 }
                 else
                 {
-                    return TokenType.Error;
+                    TakeIt();
+                    return TokenType.Operator;
                 }
             }
             else if (Reader.Current == ';')
@@ -208,6 +223,10 @@ namespace Compiler.Tokenization
                     TakeIt();
                 }
                 else if (Reader.Current == '?')
+                {
+                    TakeIt();
+                }
+                else if (char.IsWhiteSpace(Reader.Current))
                 {
                     TakeIt();
                 }

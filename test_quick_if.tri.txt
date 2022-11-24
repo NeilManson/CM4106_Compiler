@@ -1,0 +1,18 @@
+&Example program using quick if 
+let 
+	const MAX ~ 10;
+	var n ~ Integer
+in
+	begin
+		put({n}); put({u}); put({m}); put({b}); put({e}); put({r}); put({?});
+		getint(var n);
+		? n > 0 => 
+			? n < MAX =>
+				while (n > 0)
+					begin
+						putint(n);puteol();
+						n ~ n-1
+					end
+				wend
+			
+	end  

@@ -85,6 +85,7 @@ namespace Compiler.SemanticAnalysis
             else if (varDeclaration.EntityType != assignCommand.Expression.Type)
             {
                 // Error - expression is wrong type for the variable
+                Reporter.ReportError("");
             }
         }
 
@@ -157,6 +158,21 @@ namespace Compiler.SemanticAnalysis
             if (ifCommand.Expression.Type != StandardEnvironment.BooleanType)
             {
                 // Error: expression needs to be a boolean
+            }
+        }
+
+        /// <summary>
+        /// Carries out type checking on an if command node
+        /// </summary>
+        /// <param name="ifCommand">The node to perform type checking on</param>
+        private void PerformTypeCheckingOnQuickIfCommand(QuickIfCommandNode quickIfCommand)
+        {
+            PerformTypeChecking(quickIfCommand.Expression);
+            PerformTypeChecking(quickIfCommand.DoCommand);
+            if (quickIfCommand.Expression.Type != StandardEnvironment.BooleanType)
+            {
+                // Error: expression needs to be a boolean
+                Reporter.ReportError("");
             }
         }
 
